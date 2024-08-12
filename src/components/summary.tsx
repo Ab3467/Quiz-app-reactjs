@@ -20,18 +20,18 @@ const Summary: React.FC<SummaryProps> = ({ userAnswers }) => {
       <img src={quizComplt} alt="Quiz complete" />
       <h2>Quiz Completed!</h2>
       <div id="summary-stats">
-        <p>
+        <div>
           <span className='number'>{skippedAnswersPercentage}%</span>
           <span className='text'>skipped</span>
-        </p>
-        <p>
+        </div>
+        <div>
           <span className='number'>{correctAnswersPercentage}%</span>
           <span className='text'>answered correctly</span>
-        </p>
-        <p>
+        </div>
+        <div>
           <span className='number'>{wrongAnswersPercentage}%</span>
           <span className='text'>answered incorrectly</span>
-        </p>
+        </div>
       </div>
       <ol>
         {userAnswers.map((answer, index) => {
