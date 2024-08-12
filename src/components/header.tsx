@@ -7,7 +7,7 @@ const Header: React.FC = () => {
       <img
         src={Image}
         alt="logo-image"
-        className="w-12 h-12 mb-4 drop-shadow-md"
+        className="w-12 h-12 mb-4 drop-shadow-lg"
       />
       <h1 className="font-roboto-condensed font-bold text-4xl tracking-wider uppercase bg-gradient-to-r from-gradient-start to-gradient-end bg-clip-text text-transparent">
         React Quiz
