@@ -1,4 +1,3 @@
-// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -32,6 +31,22 @@ module.exports = {
       },
       spacing: {
         '2rem': '2rem',
+      },
+      fontFamily: {
+        'roboto-condensed': ['"Roboto Condensed"', 'sans-serif'],
+      },
+      fontSize: {
+        '2.5rem': '2.5rem',
+      },
+      letterSpacing: {
+        'wider': '0.6rem',
+      },
+      textTransform: {
+        'uppercase': 'uppercase',
+      },
+      colors: {
+        'gradient-start': '#e781fb',
+        'gradient-end': '#8e76fa',
       },
     },
   },
