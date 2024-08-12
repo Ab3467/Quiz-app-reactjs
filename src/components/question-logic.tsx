@@ -3,7 +3,7 @@ import QuestionTimer from './question-timer';
 import Answers from './answers'; 
 import QUESTIONS from './questions-file'; 
 
-interface QuestionProps {
+type QuestionProps ={
   index: number;
   questionText: string;
   answers: string[];
@@ -12,7 +12,7 @@ interface QuestionProps {
   onSkipAnswer: () => void;
 }
 
-interface AnswerState {
+type AnswerState = {
   selectedAnswer: string;
   isCorrect: boolean | null;
 }
