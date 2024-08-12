@@ -1,18 +1,23 @@
-import React,{useState} from "react";
-import QUESTIONS from "../Question.js"
+import React, { useState } from 'react';
+import QUESTIONS from '../question.js'; // Import as you have it
 
-const Quiz : React.FC = () => {
+const Quiz: React.FC = () => {
+  const [userAnswer, setUserAnswer] = useState<string | undefined>(undefined);
 
-  const [userAnswer,setUserAnswer] = useState<string>()
- 
-   const questionIndex = userAnswer?.length
+
+  const questionIndex = userAnswer?.length
+
 
   return (
     <div>
-      <h1>{QUESTIONS[questionIndex].map((answer)=>{
-        <li key={answer}></li>
-      })}</h1>
+      <h2>{QUESTIONS[questionIndex].text}</h2>
+      <ul>
+        {QUESTIONS[questionIndex].map((answer, index) => (
+          <li key={index}>{}</li>
+        ))}
+      </ul>
     </div>
-  )
+  );
 }
+
 export default Quiz;
