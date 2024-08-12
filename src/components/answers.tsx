@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Button } from './ui/button';
 
-type AnswersProps ={
+type AnswersProps = {
   answers: string[];
   AnswerState: 'answered' | 'correct' | 'wrong' | '';
   selectedAnswers: string | null;
@@ -20,7 +20,7 @@ const Answers: React.FC<AnswersProps> = ({ answers, AnswerState, selectedAnswers
     <ul className="list-none m-0 p-0 flex flex-col items-center gap-2">
       {shuffledAnswers.current.map((answer) => {
         const isSelected = selectedAnswers === answer;
-        let buttonClasses = 'inline-block w-full font-["Roboto Condensed"] text-base py-4 px-8 border-none rounded-full transition-all duration-200 ease-in-out disabled:opacity-50';
+        let buttonClasses = 'inline-block w-full font-["Roboto Condensed"] text-base py-4 px-8 border-none rounded-full transition-all duration-200 ease-in-out disabled:opacity-50 text-center';
 
         if (AnswerState === 'answered' && isSelected) {
           buttonClasses += ' bg-[#f5a76c] text-[#2c203d]';
