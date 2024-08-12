@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Progress } from '../components/ui/progress';
 
 type QuestionTimerProps = {
   timeout: number;
@@ -22,7 +23,7 @@ const QuestionTimer: React.FC<QuestionTimerProps> = ({ timeout, onTimeOut, mode 
   }, []);
 
   return (
-    <progress
+    <Progress
       id="question-time"
       max={timeout}
       value={remainingTime}

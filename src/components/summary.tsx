@@ -2,7 +2,7 @@ import React from 'react';
 import quizComplt from "../assets/quiz-complete.png"; 
 import QUESTIONS from './questions-file';
 
-interface SummaryProps {
+type SummaryProps = {
   userAnswers: (string | null)[];
 }
 
