@@ -3,7 +3,7 @@ import QuestionTimer from './question-timer';
 import Answers from './answers'; 
 import QUESTIONS from './questions-file'; 
 
-type QuestionProps ={
+type QuestionProps = {
   index: number;
   questionText: string;
   answers: string[];
@@ -65,7 +65,6 @@ const Question: React.FC<QuestionProps> = ({
   return (
     <div id="question" className="font-['Roboto Condensed'] text-xs text-[#9082a3] uppercase m-0">
       <QuestionTimer
-        key={timer}
         timeout={timer}
         onTimeOut={answer.selectedAnswer === '' ? onSkipAnswer : () => {}}
         mode={answerState}
