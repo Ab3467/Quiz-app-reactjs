@@ -11,13 +11,13 @@ const QuestionTimer: React.FC<QuestionTimerProps> = ({ timeout, onTimeOut, mode 
   const [remainingTime, setRemainingTime] = useState<number>(timeout);
 
   useEffect(() => {
-    
+    // Clear the previous timer and set a new one
     const timer = setTimeout(onTimeOut, remainingTime);
     return () => clearTimeout(timer);
   }, [remainingTime, onTimeOut]);
 
   useEffect(() => {
-   
+    // Decrement the remaining time every 100ms
     const interval = setInterval(() => {
       setRemainingTime((prevRemainingTime) => Math.max(prevRemainingTime - 100, 0));
     }, 100);
