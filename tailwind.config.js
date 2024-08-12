@@ -17,6 +17,18 @@ module.exports = {
       },
     },
     extend: {
+      fontFamily: {
+        roboto: ['"Roboto Condensed"', 'sans-serif'],
+      },
+      letterSpacing: {
+        wider: '0.6rem', // Custom letter-spacing
+      },
+      fontSize: {
+        '4xl': '2.5rem', // Custom font-size
+      },
+      backgroundImage: {
+        'gradient-text': 'linear-gradient(90deg, #e781fb 40%, #8e76fa 60%)',
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -33,5 +45,19 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function ({ addUtilities }) {
+      addUtilities({
+        '.bg-clip-text': {
+          backgroundClip: 'text',
+          WebkitBackgroundClip: 'text',
+        },
+        '.text-transparent': {
+          color: 'transparent',
+          WebkitTextFillColor: 'transparent',
+        },
+      });
+    },
+  ],
 }
