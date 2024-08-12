@@ -38,6 +38,7 @@ const Answers: React.FC<AnswersProps> = ({ answers, AnswerState, selectedAnswers
               onClick={() => onSelect(answer)}
               className={buttonClasses}
               disabled={AnswerState !== ''}
+              variant="default"
             >
               {answer}
             </Button>
