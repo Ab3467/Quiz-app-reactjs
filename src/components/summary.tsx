@@ -59,6 +59,7 @@ const Summary: React.FC<SummaryProps> = ({ userAnswers }) => {
         })}
       </ol>
     </div>
+    
   );
 }
 
