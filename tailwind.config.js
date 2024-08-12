@@ -1,3 +1,4 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
@@ -17,31 +18,20 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        roboto: ['"Roboto Condensed"', 'sans-serif'],
-      },
-      letterSpacing: {
-        wider: '0.6rem', // Custom letter-spacing
-      },
-      fontSize: {
-        '4xl': '2.5rem', // Custom font-size
-      },
       backgroundImage: {
-        'gradient-text': 'linear-gradient(90deg, #e781fb 40%, #8e76fa 60%)',
+        'custom-bg': 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'100%25\' height=\'100%25\' viewBox=\'0 0 800 400\'%3E%3Cdefs%3E%3CradialGradient id=\'a\' cx=\'396\' cy=\'281\' r=\'514\' gradientUnits=\'userSpaceOnUse\'%3E%3Cstop offset=\'0\' stop-color=\'%237616DD\'/%3E%3Cstop offset=\'1\' stop-color=\'%231D0433\'/%3E%3C/radialGradient%3E%3ClinearGradient id=\'b\' gradientUnits=\'userSpaceOnUse\' x1=\'400\' y1=\'148\' x2=\'400\' y2=\'333\'%3E%3Cstop offset=\'0\' stop-color=\'%2318E0FF\' stop-opacity=\'0\'/%3E%3Cstop offset=\'1\' stop-color=\'%2318E0FF\' stop-opacity=\'0.5\'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect fill=\'url(%23a)\' width=\'800\' height=\'400\'/%3E%3Cg fill-opacity=\'0.4\'%3E%3Ccircle fill=\'url(%23b)\' cx=\'267.5\' cy=\'61\' r=\'300\'/%3E%3Ccircle fill=\'url(%23b)\' cx=\'532.5\' cy=\'61\' r=\'300\'/%3E%3Ccircle fill=\'url(%23b)\' cx=\'400\' cy=\'30\' r=\'300\'/%3E%3C/g%3E%3C/svg%3E")',
       },
-      keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
+      backgroundAttachment: {
+        'fixed': 'fixed',
       },
-      animation: {
-        "accordion-down": "accordion-down 0.2s ease-out",
-        "accordion-up": "accordion-up 0.2s ease-out",
+      backgroundSize: {
+        'cover': 'cover',
+      },
+      backgroundPosition: {
+        'center': 'center',
+      },
+      spacing: {
+        '2rem': '2rem',
       },
     },
   },
@@ -49,13 +39,14 @@ module.exports = {
     require("tailwindcss-animate"),
     function ({ addUtilities }) {
       addUtilities({
-        '.bg-clip-text': {
-          backgroundClip: 'text',
-          WebkitBackgroundClip: 'text',
+        '.bg-fixed': {
+          backgroundAttachment: 'fixed',
         },
-        '.text-transparent': {
-          color: 'transparent',
-          WebkitTextFillColor: 'transparent',
+        '.bg-cover': {
+          backgroundSize: 'cover',
+        },
+        '.bg-center': {
+          backgroundPosition: 'center',
         },
       });
     },
