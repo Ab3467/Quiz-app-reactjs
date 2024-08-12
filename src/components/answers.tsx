@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { Button } from './ui/button';
 
-interface AnswersProps {
+type AnswersProps ={
   answers: string[];
   AnswerState: 'answered' | 'correct' | 'wrong' | '';
   selectedAnswers: string | null;

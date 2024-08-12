@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import QuestionTimer from './question-timer'; 
+// import QuestionTimer from './question-timer'; 
 import Answers from './answers'; 
 import QUESTIONS from './questions-file'; 
 
@@ -22,7 +22,7 @@ const Question: React.FC<QuestionProps> = ({
   questionText,
   answers,
   onSelectAnswer,
-  onSkipAnswer
+//   onSkipAnswer
 }) => {
   const [answer, setAnswer] = useState<AnswerState>({
     selectedAnswer: '',
@@ -64,11 +64,11 @@ const Question: React.FC<QuestionProps> = ({
 
   return (
     <div id="question" className="font-['Roboto Condensed'] text-xs text-[#9082a3] uppercase m-0">
-      <QuestionTimer
+      {/* <QuestionTimer
         timeout={timer}
         onTimeOut={answer.selectedAnswer === '' ? onSkipAnswer : () => {}}
         mode={answerState}
-      />
+      /> */}
       <h2 className="font-['Roboto'] text-xl font-normal my-2 text-[#c1b2dd]">{questionText}</h2>
       <Answers
         answers={answers}
