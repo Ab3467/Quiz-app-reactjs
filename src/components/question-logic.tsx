@@ -1,24 +1,29 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import QuestionTimer from './question-timer'; 
 import Answers from './answers'; 
-import QUESTIONS from './questions-file';
+import QUESTIONS from './questions-file'; 
 
-type QuestionProps ={
+interface QuestionProps {
   index: number;
-  onSelectAnswer: (answer: string) => void;
+  questionText: string;
+  answers: string[];
+  selectedAnswer?: string | null;
+  onSelectAnswer: (answer: string | null) => void;
   onSkipAnswer: () => void;
 }
 
-type AnswerState ={
+interface AnswerState {
   selectedAnswer: string;
   isCorrect: boolean | null;
 }
 
-export default function Question({
+const Question: React.FC<QuestionProps> = ({
   index,
+  questionText,
+  answers,
   onSelectAnswer,
   onSkipAnswer
-}: QuestionProps) {
+}) => {
   const [answer, setAnswer] = useState<AnswerState>({
     selectedAnswer: '',
     isCorrect: null,
@@ -50,7 +55,7 @@ export default function Question({
     }, 1000);
   }
 
-  let answerState = '';
+  let answerState: 'answered' | 'correct' | 'wrong' | '' = '';
   if (answer.selectedAnswer && answer.isCorrect !== null) {
     answerState = answer.isCorrect ? 'correct' : 'wrong';
   } else if (answer.selectedAnswer) {
@@ -62,16 +67,18 @@ export default function Question({
       <QuestionTimer
         key={timer}
         timeout={timer}
-        onTimeOut={answer.selectedAnswer === '' ? onSkipAnswer : null}
+        onTimeOut={answer.selectedAnswer === '' ? onSkipAnswer : () => {}}
         mode={answerState}
       />
-      <h2>{QUESTIONS[index].text}</h2>
+      <h2>{questionText}</h2>
       <Answers
-        answers={QUESTIONS[index].answers}
+        answers={answers}
         selectedAnswers={answer.selectedAnswer}
         AnswerState={answerState}
         onSelect={handleSelectAnswer}
       />
     </div>
   );
-}
+};
+
+export default Question;

@@ -4,12 +4,12 @@ import Quiz from './components/quiz';
 
 const App: React.FC = () => {
   return (
-   <div className="">
-    <Header/>
-    <main>
-      <Quiz/>
-    </main>
-   </div>
+    <div className="bg-custom-bg bg-fixed bg-cover bg-center m-0 p-8 min-h-screen">
+      <Header />
+      <menu>
+        <Quiz/>
+      </menu>
+    </div>
   );
 }
 
