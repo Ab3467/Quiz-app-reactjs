@@ -1,4 +1,5 @@
 import React, { useRef } from 'react';
+import { Button } from './ui/button';
 
 interface AnswersProps {
   answers: string[];
@@ -33,13 +34,13 @@ const Answers: React.FC<AnswersProps> = ({ answers, AnswerState, selectedAnswers
 
         return (
           <li key={answer} className="w-[90%] mx-auto">
-            <button
+            <Button
               onClick={() => onSelect(answer)}
               className={buttonClasses}
               disabled={AnswerState !== ''}
             >
               {answer}
-            </button>
+            </Button>
           </li>
         );
       })}
