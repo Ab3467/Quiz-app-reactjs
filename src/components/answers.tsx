@@ -17,7 +17,7 @@ const Answers: React.FC<AnswersProps> = ({ answers, AnswerState, selectedAnswers
   }
 
   return (
-    <ul className="list-none m-0 p-0 flex flex-col items-center gap-2">
+    <ul className="list-none m-0 p-0 flex flex-col items-center gap-2 font-roboto-condensed font-bold justify-center">
       {shuffledAnswers.current.map((answer) => {
         const isSelected = selectedAnswers === answer;
         let buttonClasses = 'inline-block w-full font-["Roboto Condensed"] text-base py-4 px-8 border-none rounded-full transition-all duration-200 ease-in-out disabled:opacity-50 text-center';
