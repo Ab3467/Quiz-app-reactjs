@@ -32,30 +32,30 @@ const Summary: React.FC<SummaryProps> = ({ userAnswers }) => {
         Quiz Completed!
       </h2>
       <div className="flex gap-12 w-3/5 mx-auto mb-8 pb-4 border-b-2 border-[#594276]">
-        <p className="flex-1 flex flex-col m-0">
+        <div className="flex-1 flex flex-col m-0">
           <span className="font-['Roboto Condensed'] text-4xl text-[#594276]">
             {skippedAnswersPercentage}%
           </span>
           <span className="font-['Roboto Condensed'] text-xs text-[#30273a] mt-[1rem] ml-1 tracking-wider uppercase">
             skipped
           </span>
-        </p>
-        <p className="flex-1 flex flex-col m-0">
+        </div>
+        <div className="flex-1 flex flex-col m-0">
           <span className="font-['Roboto Condensed'] text-4xl text-[#594276]">
             {correctAnswersPercentage}%
           </span>
           <span className="font-['Roboto Condensed'] text-xs text-[#30273a] mt-[1rem] ml-1 tracking-wider uppercase">
             answered correctly
           </span>
-        </p>
-        <p className="flex-1 flex flex-col m-0">
+        </div>
+        <div className="flex-1 flex flex-col m-0">
           <span className="font-['Roboto Condensed'] text-4xl text-[#594276]">
             {wrongAnswersPercentage}%
           </span>
           <span className="font-['Roboto Condensed'] text-xs text-[#30273a] mt-[1rem] ml-1 tracking-wider uppercase">
             answered incorrectly
           </span>
-        </p>
+        </div>
       </div>
       <ol className="list-none mx-auto my-8 p-0 text-center">
         {userAnswers.map((answer, index) => {
