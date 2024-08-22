@@ -15,24 +15,24 @@ const QuestionTimer: React.FC<QuestionTimerProps> = ({
   const [remainingTime, setRemainingTime] = useState<number>(timeout);
 
   useEffect(() => {
-    const timer = setTimeout(onTimeOut, remainingTime);
-    return () => clearTimeout(timer);
+    if (remainingTime === 0) {
+      onTimeOut();
+      return;
+    }
+    const interval = setInterval(() => {
+      setRemainingTime((prevRemainingTime) => Math.max(prevRemainingTime - 100, 0));
+    }, 100);
+
+    return () => clearInterval(interval);
   }, [remainingTime, onTimeOut]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRemainingTime((prevRemainingTime) =>
-        Math.max(prevRemainingTime - 100, 0)
-      );
-    }, 100);
-    return () => clearInterval(interval);
-  }, []);
+  const progressPercentage = (remainingTime / timeout) * 100;
 
   return (
     <Progress
-      max={timeout}
-      value={remainingTime}
-      className={`w-1/2 h-2 rounded-full ${
+      max={100}
+      value={progressPercentage}
+      className={`w-1/2 h-2 rounded-full transition-colors duration-300 ${
         mode === "answered"
           ? "bg-[#f8e59c]"
           : mode === "correct"
@@ -40,7 +40,7 @@ const QuestionTimer: React.FC<QuestionTimerProps> = ({
           : mode === "wrong"
           ? "bg-[#f55a98]"
           : "bg-[#9e5ef8]"
-      } transition-colors duration-300`}
+      }`}
     />
   );
 };
