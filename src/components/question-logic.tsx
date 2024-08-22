@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import QuestionTimer from './question-timer'; 
 import Answers from './answers'; 
-import { Button } from './ui/button';
-import QUESTIONS from './questions-file';
+import { Button } from './ui/button'; 
+import QUESTIONS from './questions-file'; 
 
 type QuestionProps = {
   index: number;
@@ -22,7 +22,7 @@ const Question: React.FC<QuestionProps> = ({
   questionText,
   answers,
   onSelectAnswer,
-   onSkipAnswer
+  onSkipAnswer
 }) => {
   const [answer, setAnswer] = useState<AnswerState>({
     selectedAnswer: '',
@@ -34,31 +34,27 @@ const Question: React.FC<QuestionProps> = ({
     setQuizStarted(true);
   };
 
-  let timer = 10000;
-  if (answer.selectedAnswer) {
-    timer = 1000;
-  }
-  if (answer.isCorrect !== null) {
-    timer = 2000;
-  }
+  useEffect(() => {
+    if (quizStarted) {
+      // Automatically start the timer when the quiz starts
+      const timer = setTimeout(() => {
+        if (answer.selectedAnswer === '') {
+          onSkipAnswer();
+        }
+      }, 10000); // Assuming a 10-second timer
+      return () => clearTimeout(timer);
+    }
+  }, [quizStarted, answer.selectedAnswer, onSkipAnswer]);
 
-  function handleSelectAnswer(answer: string) {
+  const handleSelectAnswer = (selectedAnswer: string) => {
     setAnswer({
-      selectedAnswer: answer,
-      isCorrect: null,
+      selectedAnswer: selectedAnswer,
+      isCorrect: QUESTIONS[index].answers[0] === selectedAnswer,
     });
-
     setTimeout(() => {
-      setAnswer({
-        selectedAnswer: answer,
-        isCorrect: QUESTIONS[index].answers[0] === answer,
-      });
-
-      setTimeout(() => {
-        onSelectAnswer(answer);
-      }, 2000);
-    }, 1000);
-  }
+      onSelectAnswer(selectedAnswer);
+    }, 2000); // Delay before moving to the next question
+  };
 
   let answerState: 'answered' | 'correct' | 'wrong' | '' = '';
   if (answer.selectedAnswer && answer.isCorrect !== null) {
@@ -79,7 +75,7 @@ const Question: React.FC<QuestionProps> = ({
       ) : (
         <>
           <QuestionTimer
-            timeout={timer}
+            timeout={10000} // 10-second timer for each question
             onTimeOut={answer.selectedAnswer === '' ? onSkipAnswer : () => {}}
             mode={answerState}
           />
