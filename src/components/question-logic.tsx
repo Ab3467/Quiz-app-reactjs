@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import QuestionTimer from './question-timer'; 
 import Answers from './answers'; 
+import { Button } from './ui/button';
 import QUESTIONS from './questions-file';
 
 type QuestionProps = {
@@ -69,12 +70,12 @@ const Question: React.FC<QuestionProps> = ({
   return (
     <div id="question" className="font-['Roboto Condensed'] text-xs text-[#9082a3] uppercase m-0">
       {!quizStarted ? (
-        <button
+        <Button
           onClick={handleStartQuiz}
           className="p-2 bg-blue-500 text-white rounded"
         >
           Start Quiz
-        </button>
+        </Button>
       ) : (
         <>
           <QuestionTimer
