@@ -26,15 +26,15 @@ const Summary: React.FC<SummaryProps> = ({ userAnswers }) => {
       <div className="flex gap-12 w-3/5 mx-auto mb-8 pb-4 border-b-2 border-[#594276]">
         <p className="flex-1 flex flex-col m-0">
           <span className="font-['Roboto Condensed'] text-4xl text-[#594276]">{skippedAnswersPercentage}%</span>
-          <span className="font-['Roboto Condensed'] text-xs text-[#30273a] mt-[-0.7rem] ml-1 tracking-wider uppercase">skipped</span>
+          <span className="font-['Roboto Condensed'] text-xs text-[#30273a] mt-[1rem] ml-1 tracking-wider uppercase">skipped</span>
         </p>
         <p className="flex-1 flex flex-col m-0">
           <span className="font-['Roboto Condensed'] text-4xl text-[#594276]">{correctAnswersPercentage}%</span>
-          <span className="font-['Roboto Condensed'] text-xs text-[#30273a] mt-[-0.7rem] ml-1 tracking-wider uppercase">answered correctly</span>
+          <span className="font-['Roboto Condensed'] text-xs text-[#30273a] mt-[1rem] ml-1 tracking-wider uppercase">answered correctly</span>
         </p>
         <p className="flex-1 flex flex-col m-0">
           <span className="font-['Roboto Condensed'] text-4xl text-[#594276]">{wrongAnswersPercentage}%</span>
-          <span className="font-['Roboto Condensed'] text-xs text-[#30273a] mt-[-0.7rem] ml-1 tracking-wider uppercase">answered incorrectly</span>
+          <span className="font-['Roboto Condensed'] text-xs text-[#30273a] mt-[1rem] ml-1 tracking-wider uppercase">answered incorrectly</span>
         </p>
       </div>
       <ol className="list-none mx-auto my-8 p-0 text-center">
@@ -50,8 +50,10 @@ const Summary: React.FC<SummaryProps> = ({ userAnswers }) => {
           }
 
           return (
-            <li key={index} className="my-8">
-              <h3 className="font-['Roboto Condensed'] text-base my-0 flex justify-center items-center bg-[#2c203d] text-[#d8cde8] w-8 h-8 rounded-full">{index + 1}</h3>
+            <li key={index} className="my-8 flex flex-col items-center font-['Roboto Condensed']">
+              <h3 className="text-base my-0 flex justify-center items-center text-center bg-[#2c203d] text-[#d8cde8] w-8 h-8 rounded-full mb-2">
+                {index + 1}
+              </h3>
               <p className="text-base text-[#30273a] my-1">{QUESTIONS[index].text}</p>
               <p className={cssClass}>{answer ?? 'skipped'}</p>
             </li>
@@ -59,7 +61,6 @@ const Summary: React.FC<SummaryProps> = ({ userAnswers }) => {
         })}
       </ol>
     </div>
-    
   );
 }
 
