@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../src/components/header'; // Ensure the path is correct
+import Header from '../src/components/header';
 import Quiz from './components/quiz';
 
 const App: React.FC = () => {
