@@ -1,10 +1,10 @@
 import React, { useCallback, useState } from 'react';
-import QUESTIONS from './questions-file'; // Ensure the path and file extension are correct
-import Summary from './summary'; // Ensure the path and file extension are correct
-import Question from './question-logic'; // Ensure the path and file extension are correct
+import QUESTIONS from './questions-file'; 
+import Summary from './summary'; 
+import Question from './question-logic'; 
 
 const Quiz: React.FC = () => {
-  const [userAnswers, setUserAnswers] = useState<(string | null)[]>([]); // Adjusted to include null
+  const [userAnswers, setUserAnswers] = useState<(string | null)[]>([]);
 
   const activeQuestionIndex = userAnswers.length;
   const isQuizComplete = activeQuestionIndex === QUESTIONS.length;
@@ -18,7 +18,7 @@ const Quiz: React.FC = () => {
   }, [handleSelectAnswer]);
 
   if (isQuizComplete) {
-    return <Summary userAnswers={userAnswers} />; // Ensure correct type for userAnswers
+    return <Summary userAnswers={userAnswers} />; 
   }
 
   return (
