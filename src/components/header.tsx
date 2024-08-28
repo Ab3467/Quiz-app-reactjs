@@ -1,5 +1,5 @@
-import React from 'react';
-import Image from "../assets/quiz-logo.png"; 
+import React from "react";
+import Image from "../assets/quiz-logo.png";
 
 const Header: React.FC = () => {
   return (
@@ -14,6 +14,6 @@ const Header: React.FC = () => {
       </h1>
     </header>
   );
-}
+};
 
 export default Header;
