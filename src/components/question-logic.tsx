@@ -7,7 +7,6 @@ type QuestionProps = {
   index: number;
   questionText: string;
   answers: string[];
-  selectedAnswer?: string | null;
   onSelectAnswer: (answer: string | null) => void;
   onSkipAnswer: () => void;
 };
