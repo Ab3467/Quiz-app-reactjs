@@ -13,6 +13,8 @@ const Quiz: React.FC = () => {
     setUserAnswers((prevAnswers) => [...prevAnswers, selectedAnswer]);
   }, []);
 
+  
+
   const handleSkipAnswer = useCallback(() => {
     handleSelectAnswer(null);
   }, [handleSelectAnswer]);
