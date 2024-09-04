@@ -12,16 +12,13 @@ const Quiz: React.FC = () => {
   const handleSelectAnswer = useCallback((selectedAnswer: string | null) => {
     setUserAnswers((prevAnswers) => [...prevAnswers, selectedAnswer]);
   }, []);
-
-  
-
   const handleSkipAnswer = useCallback(() => {
     handleSelectAnswer(null);
   }, [handleSelectAnswer]);
 
-   if(isQuizComplete){
-    return <Summary userAnswers={userAnswers}/>
-   }
+  if (isQuizComplete) {
+    return <Summary userAnswers={userAnswers} />;
+  }
 
   return (
     <div className="max-w-[50rem] font-roboto-condensed font-bold mx-auto p-8 bg-gradient-to-b from-[#3e2a60] to-[#321061] rounded-lg shadow-[1px_1px_8px_4px_rgba(12,5,32,0.6)] text-center">
