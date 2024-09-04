@@ -1,14 +1,19 @@
-import React, { useRef } from 'react';
-import { Button } from './ui/button';
+import React, { useRef } from "react";
+import { Button } from "./ui/button";
 
 type AnswersProps = {
   answers: string[];
-  AnswerState: 'answered' | 'correct' | 'wrong' | '';
+  AnswerState: "answered" | "correct" | "wrong" | "";
   selectedAnswers: string | null;
   onSelect: (answer: string) => void;
-}
+};
 
-const Answers: React.FC<AnswersProps> = ({ answers, AnswerState, selectedAnswers, onSelect }) => {
+const Answers: React.FC<AnswersProps> = ({
+  answers,
+  AnswerState,
+  selectedAnswers,
+  onSelect,
+}) => {
   const shuffledAnswers = useRef<string[] | undefined>(undefined);
 
   if (!shuffledAnswers.current) {
@@ -20,16 +25,18 @@ const Answers: React.FC<AnswersProps> = ({ answers, AnswerState, selectedAnswers
     <ul className="list-none m-0 p-0 flex flex-col items-center gap-2 font-roboto-condensed font-bold justify-center">
       {shuffledAnswers.current.map((answer) => {
         const isSelected = selectedAnswers === answer;
-        let buttonClasses = 'inline-block w-full font-["Roboto Condensed"] text-base py-4 px-8 border-none rounded-full transition-all duration-200 ease-in-out disabled:opacity-50 text-center';
+        let buttonClasses =
+          'inline-block w-full font-["Roboto Condensed"] text-base py-4 px-8 border-none rounded-full transition-all duration-200 ease-in-out disabled:opacity-50 text-center';
 
-        if (AnswerState === 'answered' && isSelected) {
-          buttonClasses += ' bg-[#f5a76c] text-[#2c203d]';
-        } else if (AnswerState === 'correct' && isSelected) {
-          buttonClasses += ' bg-[#5af59d] text-[#2c203d]';
-        } else if (AnswerState === 'wrong' && isSelected) {
-          buttonClasses += ' bg-[#f55a98] text-[#2c203d]';
+        if (AnswerState === "answered" && isSelected) {
+          buttonClasses += " bg-[#f5a76c] text-[#2c203d]";
+        } else if (AnswerState === "correct" && isSelected) {
+          buttonClasses += " bg-[#5af59d] text-[#2c203d]";
+        } else if (AnswerState === "wrong" && isSelected) {
+          buttonClasses += " bg-[#f55a98] text-[#2c203d]";
         } else {
-          buttonClasses += ' bg-[#6cb7f5] hover:bg-[#9d5af5] hover:text-white focus:bg-[#9d5af5] focus:text-white';
+          buttonClasses +=
+            " bg-[#6cb7f5] hover:bg-[#9d5af5] hover:text-white focus:bg-[#9d5af5] focus:text-white";
         }
 
         return (
@@ -37,7 +44,7 @@ const Answers: React.FC<AnswersProps> = ({ answers, AnswerState, selectedAnswers
             <Button
               onClick={() => onSelect(answer)}
               className={buttonClasses}
-              disabled={AnswerState !== ''}
+              disabled={AnswerState !== ""}
               variant="default"
             >
               {answer}
@@ -47,6 +54,6 @@ const Answers: React.FC<AnswersProps> = ({ answers, AnswerState, selectedAnswers
       })}
     </ul>
   );
-}
+};
 
 export default Answers;
